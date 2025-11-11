@@ -37,7 +37,7 @@ This project demonstrates containerized machine learning workflows by fine-tunin
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/mlops-project2.git
+git clone https://github.com/FloHoliday/MLOPS_Project2
 cd mlops-project2
 ```
 
