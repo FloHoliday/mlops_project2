@@ -1,0 +1,53 @@
+# ----------------------------------------------------------------
+# General
+# ----------------------------------------------------------------
+# Operating System files
+.DS_Store
+Thumbs.db
+._*
+
+# ----------------------------------------------------------------
+# Python
+# ----------------------------------------------------------------
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info/
+sdist/
+
+# Virtual environments
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Test & coverage artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ----------------------------------------------------------------
+# IDEs & Editors
+# ----------------------------------------------------------------
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# ----------------------------------------------------------------
+# Secrets & Environment Variables
+# ----------------------------------------------------------------
+# Never commit secrets or local env files
+.env
+*.env
+.env.*
+*.local
+
+
+# Wandb logings not needed on github
+wandb/
+wandb_logs/

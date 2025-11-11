@@ -1,0 +1,21 @@
+[project]
+name = "mlops-project2"
+version = "0.1.0"
+description = "MLOps Project 2 - Containerization"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"  # Python 3.12
+dependencies = [
+    "datasets>=4.0.0",
+    "evaluate>=0.4.0",
+    "lightning>=2.4.0",
+    "scikit-learn>=1.5.0",
+    "transformers>=4.40.0",
+    "wandb>=0.17.0",
+    "torch==2.5.1",
+    "torchvision==0.20.1",
+]
+
+[tool.uv]
+index-url = "https://download.pytorch.org/whl/cpu"
+extra-index-url = ["https://pypi.org/simple"]
+index-strategy = "unsafe-best-match"
