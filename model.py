@@ -12,18 +12,16 @@ class GLUETransformer(L.LightningModule):
         num_labels: int,
         task_name: str,
         learning_rate: float = 2e-5, # Hyperparameter, Learning rate (1e-5 to 5e-5 typical)
-        warmup_steps: int = 0, # Hyperparameter , Number of Warmupsteps (0-500 normal)
+        warmup_steps: int = 0, # Hyperparameter  Number of Warmupsteps (0-500 normal)
         weight_decay: float = 0.0, # Hyperparameter, L2 regularization(0.0-0.1)
         train_batch_size: int = 32, # Hyperparameter, passed for referemce
         eval_batch_size: int = 32, # Hyperparameter, passed for referemce
         eval_splits: Optional[list] = None,
-        # NEUE HYPERPARAMETER HINZUFÜGEN
         optimizer_type: str = "AdamW",  # Standardwert ist AdamW
         adam_epsilon: float = 1e-8,     # Adam/AdamW Epsilon
         adam_betas: tuple = (0.9, 0.999), # Adam/AdamW Betas
         sgd_momentum: float = 0.9, # sgd para
 
-        # Ende NEUE HYPERPARAMETER
         **kwargs,
     ):
         super().__init__()
@@ -84,7 +82,6 @@ class GLUETransformer(L.LightningModule):
 
 
     def configure_optimizers(self):
-        """Prepare optimizer and schedule (linear warmup and decay)"""
         model = self.model
         no_decay = ["bias", "LayerNorm.weight"]
         optimizer_grouped_parameters = [
@@ -98,7 +95,6 @@ class GLUETransformer(L.LightningModule):
             },
         ]
 
-        # NEUER CODE: Dynamische Optimierer-Auswahl
         if self.hparams.optimizer_type == "AdamW":
             optimizer = torch.optim.AdamW(
                 optimizer_grouped_parameters,
@@ -117,10 +113,9 @@ class GLUETransformer(L.LightningModule):
             optimizer = torch.optim.SGD(
                 optimizer_grouped_parameters,
                 lr=self.hparams.learning_rate,
-                momentum=self.hparams.sgd_momentum, # Beispiel für SGD spezifischen Hyperparameter
-                weight_decay=self.hparams.weight_decay # SGD braucht weight_decay hier direkt
+                momentum=self.hparams.sgd_momentum,
+                weight_decay=self.hparams.weight_decay
             )
-        # HIER KÖNNTEN WEITERE OPTIMIZER HINZUGEFÜGT WERDEN
         else:
             raise ValueError(f"Optimizer type '{self.hparams.optimizer_type}' not supported.")
 

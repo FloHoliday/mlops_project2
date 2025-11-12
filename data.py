@@ -31,13 +31,13 @@ class GLUEDataModule(L.LightningDataModule):
     }
 
     loader_columns = [
-        "datasets_idx", # Index des Beispiels im Dataset
-        "input_ids", # Tokenisierter Text als IDs
-        "token_type_ids", # Segment IDs (0=Satz1, 1=Satz2)
-        "attention_mask", # 1=echtes Token, 0=Padding
-        "start_positions", # Für Question Answering (hier nicht genutzt)
-        "end_positions", # Für Question Answering (hier nicht genutzt)
-        "labels",  # Die Ziel-Labels (0 oder 1 für MRPC)
+        "datasets_idx",
+        "input_ids",
+        "token_type_ids",
+        "attention_mask",
+        "start_positions",
+        "end_positions",
+        "labels",
     ]
 
     def __init__(
